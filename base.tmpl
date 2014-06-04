@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}Riddle System{% end %}</title>
+    <meta property="og:title" content="Riddle System" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://dplsubmit.cs.uwec.edu:9550/" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <style>
+      img {
+        max-height: 400px
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+        <li class=""><a href="#about" data-toggle="tab">About</a></li>
+      </ul>
+      <div id="myTavContent" class="tab-content">
+        <div class="tab-pane fade active in" id="home">
+        <h1>Welcome to the Riddle System</h1>
+        <h2>Enter the right keyword to keep moving through the different levels.</h2>
+        <div class="jumbotron">
+          {% block jumbotron %}
+          {% end %}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="about">
+        <h1>What is a Riddle?</h1>
+        <blockquote>
+            <p>"A riddle is a statement or question or phrase having a double or veiled meaning, put forth as a puzzle to be solved. Riddles are of two types: enigmas, which are problems generally expressed in metaphorical or allegorical language that require ingenuity and careful thinking for their solution, and conundra, which are questions relying for their effects on punning in either the question or the answer."</p> 
+            <small>Riddle in <cite title="Riddle in Wikipedia"><a target="_blank" href="http://en.wikipedia.org/wiki/Riddle">Wikipedia</a></cite></small>
+        </blockquote>
+        <h4>In our context, a Riddle is a web-based game where the objective is to finish it, passing through different levels.</h4>
+        <h4> It consists in unveil enigmas using your logical thinking, knowledge, creativity, research and, mainly, willingness to find the keywords.</h4>
+        <h1>Level:</h1>
+        <h4>Each <b>level</b> shows an <b>image</b> and a <b>phrase</b>. The <b>image</b> and the <b>phrase</b> are somehow <u>related</u> to a <b>keyword</b>.</h4>
+        <h4>The user needs to figure out the <b>keyword</b> by trial and error. In order to do that, a <b>text input</b> is available, below the given <b>image</b> and <b>phrase</b>, followed by a <b>submit button</b>.</h4>
+      </div>
+     </div>
+   </div>
+   {% block scripts %}{% end %}
+ </body>
+</html>

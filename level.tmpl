@@ -1,0 +1,47 @@
+{% extends "base.tmpl" %}
+
+{% block title %}Riddle System{% end %}
+
+{% block jumbotron %}
+          <form method="post" class="form-inline" role="form">
+            <h3>Level {{ level['number'] }} 
+            {% if 'correct_ans' in globals() %}
+              {%if  not correct_ans %} 
+               <span id="feed" class="label label-danger">Wrong!</span> 
+              {% else %} 
+               <span id="feed" class="label label-success">Right! :)</span>
+              {% end %}
+            {% end %}
+              </h3>
+            <figure>
+              <img class="img-responsive" src="/images/{{ level['img'] }}">
+            </figure>
+            <p>"{{ level['phrase'] }}"</p>
+            <div class="row">
+              <div class="form-group col-sm-5">
+                <label class="control-label" for="password">Keyword: </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="password" name="password" {%if password %} value="{{ password }}"{% end %} autofocus>
+                  <span class="input-group-btn">      
+                    <button id="submit" class="btn btn-default" type="submit">Submit</button>
+                  </span> 
+                </div>
+              </div>
+            </div>
+          </form>
+{% end %}
+
+{% block scripts %}
+    <script>
+    $(window).load(function() {
+        window.setTimeout(function(){$("#feed").remove()}, 5000);
+        {% if 'next_id' in globals() and next_id %}
+        $("#password").prop('disabled',true);
+        $("#submit").addClass("disabled");
+        window.setTimeout(function(){
+            window.location.replace("/level/{{next_id}}");
+        }, 2500);
+        {% end %}
+    });
+    </script>
+{% end %}
